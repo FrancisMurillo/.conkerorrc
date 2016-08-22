@@ -28,3 +28,27 @@ editor_shell_command = "emacsclient -c";
 
 
 
+require("global-overlay-keymap");
+define_key_alias("C-[", "escape");
+
+define_key(content_buffer_normal_keymap, 'd', 'follow-new-buffer');
+
+
+// 3.1 Number keys for tab selection
+function define_switch_buffer_key(key, buf_num) {
+    define_key(default_global_keymap, key, function(I) {
+        switch_to_buffer(I.window,
+            I.window.buffers.get_buffer(buf_num));
+    });
+}
+for (let i = 0; i < 10; ++i) {
+    define_switch_buffer_key('M-' + String((i + 1) % 10), i);
+}
+
+// define_key(default_global_keymap, 'M-n', 'buffer-next')
+// define_key(default_global_keymap, 'M-p', 'buffer-previous')
+
+
+theme_load_paths.unshift("~/.conkerorrc/themes/");
+theme_unload("default");
+theme_load("conkeror-theme-zenburn");
