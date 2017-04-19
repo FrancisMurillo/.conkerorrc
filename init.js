@@ -57,7 +57,7 @@ theme_load("conkeror-theme-zenburn");
 
 //set the proxy server for this session only
 proxy_server_default = "127.0.0.1";
-proxy_port_default = 18123;
+proxy_port_default = 18118;
 
 
 function set_proxy_session (window, server, port) {
