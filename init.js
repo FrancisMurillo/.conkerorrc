@@ -94,3 +94,14 @@ interactive("set-proxy-session",
                     (yield I.minibuffer.read($prompt = "server ["+proxy_server_default+"] or N: ")),
                     (yield I.minibuffer.read($prompt = "port ["+proxy_port_default+"]: ")));
             });
+
+// Downloads
+function update_save_path (info) {
+    cwd = info.target_file.parent;
+}
+add_hook("download_added_hook", update_save_path);
+
+
+set_handler("download-show",
+            alternates(download_show_new_buffer,
+                       download_show_new_window));
