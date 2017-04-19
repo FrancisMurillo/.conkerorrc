@@ -1,3 +1,4 @@
+
 //allow for 'contrib' stuff
 load_paths.unshift("chrome://conkeror-contrib/content/");
 
@@ -100,8 +101,3 @@ function update_save_path (info) {
     cwd = info.target_file.parent;
 }
 add_hook("download_added_hook", update_save_path);
-
-
-set_handler("download-show",
-            alternates(download_show_new_buffer,
-                       download_show_new_window));
